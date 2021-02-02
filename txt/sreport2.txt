@@ -1,0 +1,6 @@
+Cluster/User/Account Utilization 2021-01-01T00:00:00 - 2021-02-02T17:59:59 (2829600 secs)
+Usage reported in CPU Minutes
+--------------------------------------------------------------------------------
+  Cluster     Login     Proper Name         Account     Used   Energy
+--------- --------- --------------- --------------- -------- --------
+ gengzisc    gengzi          gengzi           local   352026        0

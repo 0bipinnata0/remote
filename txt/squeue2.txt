@@ -1,0 +1,12 @@
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON) 
+               941      2697 vasp-job zhangjie  R 1-08:47:41      1 hn2 
+              1005      2697 sub.vasp wangjins  R   10:29:57      1 hn8 
+              1013      2697   sub.sh wangdeju  R    8:05:51      1 hn6 
+              1020      8176   job.sh  fengyue  R    6:44:35      1 sf2 
+              1028      8176   job.sh  shentao  R    4:45:16      1 sf4 
+              1029      8176   g09sub mayuanyu  R    4:43:03      1 sf1 
+              1043      8172 78-FeN4-    lixin  R    2:18:05      1 hq1 
+              1047      8176 sub.vasp cuizhimi  R    1:28:37      1 sf3 
+              1051      2697 sub6.g16 yuhaoran  R      22:02      1 hn1 
+              1052      8172 sub.vasp dingjing  R      17:46      1 hq2 
+              1053      8172 sub.vasp dingjing  R      17:07      1 hq3
