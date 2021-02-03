@@ -1,0 +1,2 @@
+              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1122      8176   g09sub mayuanyu  R      38:15      1 sf1

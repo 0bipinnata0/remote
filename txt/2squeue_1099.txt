@@ -1,0 +1,2 @@
+              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1099      2697   job.sh  shentao  R    7:27:46      1 hn1

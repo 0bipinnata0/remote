@@ -1,0 +1,15 @@
+              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1056      8172 sub.vasp dingjing PD       0:00      1 (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions)
+              1096      8172    1.g16    lixin PD       0:00      1 (Priority)
+              1097      8172 sub.vasp dingjing PD       0:00      1 (ReqNodeNotAvail, UnavailableNodes:hq[1-4])
+              1114      8176   job.sh  shentao PD       0:00      1 (AssocMaxJobsLimit)
+              1116      8172   job.sh  shentao PD       0:00      1 (AssocMaxJobsLimit)
+              1117      8176   job.sh  shentao PD       0:00      1 (AssocMaxJobsLimit)
+               941      2697 vasp-job zhangjie  R 2-08:14:51      1 hn2
+              1013      2697   sub.sh wangdeju  R 1-07:33:01      1 hn6
+              1028      8176   job.sh  shentao  R 1-04:12:26      1 sf4
+              1099      2697   job.sh  shentao  R    7:27:46      1 hn1
+              1111      2697   sub.sh wangdeju  R    4:19:10      1 hn7
+              1113      8176  g16.pbs fanchang  R    3:21:09      1 sf2
+              1122      8176   g09sub mayuanyu  R      38:15      1 sf1
+              1123      8176 sub.vasp dingjing  R      31:01      1 sf3

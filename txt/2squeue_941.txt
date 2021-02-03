@@ -1,0 +1,2 @@
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+               941      2697 vasp-job zhangjie  R 2-08:14:51      1 hn2

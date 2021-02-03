@@ -1,15 +1,15 @@
-const { Client } = require('ssh2');
+const { Client } = require("ssh2");
 
 var reg = /\s+/g;
 
-function createArr(remoteStr) {
-  console.log(remoteStr);
-  const squeueArr = remoteStr.split('\n');
+function createArr(squeue) {
+  console.log(squeue);
+  const squeueArr = squeue.split("\n");
   const title = squeueArr.shift();
   const titleArr = [];
   title
-    .replace(reg, ' ')
-    .split(' ')
+    .replace(reg, " ")
+    .split(" ")
     .forEach((item) => {
       if (item) {
         titleArr.push(item);
@@ -20,8 +20,8 @@ function createArr(remoteStr) {
     let objItem = void 0;
     let index = 0;
     squeueItem
-      .replace(reg, ' ')
-      .split(' ')
+      .replace(reg, " ")
+      .split(" ")
       .forEach((item) => {
         if (item) {
           if (!objItem) objItem = {};
@@ -33,31 +33,34 @@ function createArr(remoteStr) {
   return objArr;
 }
 
+let globalData = ''
+
 const conn = new Client();
 conn
-  .on('ready', () => {
-    conn.exec('squeue', (err, stream) => {
+  .on("ready", () => {
+    // conn.exec("sreport Cluster UserUtilizationByAccount user=gengzi start=2021-01-01 end=now", (err, stream) => {
+    conn.exec("./Findmyjobs", (err, stream) => {
       if (err) throw err;
       stream
-        .on('close', (code, signal) => {
-          console.log(
-            'Stream :: close :: code: ' + code + ', signal: ' + signal
-          );
+        .on("close", (code, signal) => {
+          // console.log("Stream :: close :: code: " + code + ", signal: " + signal);
+          console.log('globalData', globalData)
           conn.end();
         })
-        .on('data', (data) => {
-          const outside = createArr('' + data);
-          console.log('outside', outside);
+        .on("data", (data) => {
+          globalData = globalData + data
+          // const outside = createArr("" + data);
+          // console.log('outside', outside)
         })
-        .stderr.on('data', (data) => {
-          console.log('STDERR: ' + data);
+        .stderr.on("data", (data) => {
+          console.log("STDERR: " + data);
         });
     });
   })
   .connect({
-    host: '192.168.173.1',
+    host: "192.168.173.1",
     port: 22,
-    username: 'gengzi',
-    password: 'gengzi456',
+    username: "gengzi",
+    password: "gengzi456",
     //privateKey: require('fs').readFileSync('/home/admin/.ssh/id_dsa')
   });

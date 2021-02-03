@@ -1,0 +1,2 @@
+              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1123      8176 sub.vasp dingjing  R      31:01      1 sf3

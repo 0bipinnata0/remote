@@ -1,6 +1,0 @@
-PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST 
-2697*        up   infinite      4  alloc hn[1-2,6,8]
-2697*        up   infinite      4   idle hn[3-5,7]
-8176         up   infinite      4  alloc sf[1-4]
-8172         up   infinite      3  alloc hq[1-3]
-8172         up   infinite      1   idle hq4

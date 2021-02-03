@@ -1,0 +1,2 @@
+              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+              1013      2697   sub.sh wangdeju  R 1-07:33:01      1 hn6

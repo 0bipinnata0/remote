@@ -1,14 +1,16 @@
 const fs = require('fs');
 
-const sinfo = fs.readFileSync('./txt/sinfo.txt', 'utf-8');
-const squeue = fs.readFileSync('./txt/squeue.txt', 'utf-8');
+const sinfo = fs.readFileSync('./txt/2sinfo.txt', 'utf-8');
+const squeue = fs.readFileSync('./txt/2squeue.txt', 'utf-8');
+const tasks = fs.readFileSync('./txt/2Findmyjobs.txt', 'utf-8');
 
 // TODO 1.nodes 构建
 
 var reg = /\s+/g;
 
-function createArr(squeue) {
-  const squeueArr = squeue.split('\r\n');
+function createArr(squeue, split) {
+  if (!split) split = '\r\n';
+  const squeueArr = squeue.split(split);
   const title = squeueArr.shift();
   const titleArr = [];
   title
@@ -73,8 +75,9 @@ console.log('nodes', nodes);
 // TODO 1.nodes 构建
 
 // TODO 2.running time构建
-function getHours(times) {
+function getHours(times, pattern) {
   let hours = 0;
+  let output = 0;
   times.forEach(({ TIME }) => {
     let seconds = 0;
     let timeArr = TIME.split('-');
@@ -90,7 +93,11 @@ function getHours(times) {
       unit = unit * 60;
     }
     hours = hours + Math.ceil(seconds / 3600);
+    output = output + seconds;
   });
+  if (pattern === 's') {
+    return output;
+  }
   return hours;
 }
 
@@ -105,4 +112,41 @@ console.log('***************');
 console.log('times', times);
 // TODO 2.running time构建
 
-// TODO 3.
+console.log('3333333333333333333333333333333');
+// TODO 3.Tasks list
+console.log(tasks);
+
+const tasksArr = [];
+tasks.split('\r\n').forEach((taskItem) => {
+  let taskItemArr = void 0;
+  if (taskItem) {
+    taskItemArr = taskItem.replace(reg, ' ').split(' ');
+  }
+  if (taskItemArr && taskItemArr.length > 2) {
+    tasksArr.push(taskItemArr);
+  }
+});
+// console.log(tasksArr);
+
+// const tasks_pid = fs.readFileSync('./txt/2Findmyjobs.txt', 'utf-8');
+
+const taskFormat = tasksArr.map((taskItem) => {
+  // TODO 以下代码根据具体变更
+  const tasks_pid = fs.readFileSync(
+    './txt/2squeue_' + taskItem[0] + '.txt',
+    'utf-8'
+  );
+  // TODO 以上代码根据具体变更
+  const itemTmp = createArr(tasks_pid, '\n');
+  return [
+    taskItem[0],
+    taskItem[1].split('=')[1],
+    itemTmp[0].USER,
+    getHours(itemTmp, 's'),
+    itemTmp[0].ST,
+    taskItem[2].split('=')[1],
+  ];
+});
+
+console.log('taskFormat');
+console.log(taskFormat);
