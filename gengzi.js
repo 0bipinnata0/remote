@@ -40,7 +40,9 @@ conn
   .on("ready", () => {
     // conn.exec("sreport Cluster UserUtilizationByAccount user=gengzi start=2021-01-01 end=now", (err, stream) => {
     // conn.exec("./Findmyjobs", (err, stream) => {
-    conn.exec("./Findmyjobs;echo '**********';squeue", (err, stream) => {
+    // conn.exec("squeue", (err, stream) => {
+    // conn.exec("sreport Cluster UserUtilizationByAccount user=lixin start=2021-01-01 end=now", (err, stream) => {
+    conn.exec("sreport Cluster UserUtilizationByAccount user=lixin", (err, stream) => {
       if (err) throw err;
       stream
         .on("close", (code, signal) => {
@@ -49,7 +51,8 @@ conn
           conn.end();
         })
         .on("data", (data) => {
-          console.log('1',''+data)
+          // console.log('1',''+data)
+
           globalData = globalData + data
           // const outside = createArr("" + data);
           // console.log('outside', outside)
