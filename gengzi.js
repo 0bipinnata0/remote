@@ -39,15 +39,17 @@ const conn = new Client();
 conn
   .on("ready", () => {
     // conn.exec("sreport Cluster UserUtilizationByAccount user=gengzi start=2021-01-01 end=now", (err, stream) => {
-    conn.exec("./Findmyjobs", (err, stream) => {
+    // conn.exec("./Findmyjobs", (err, stream) => {
+    conn.exec("./Findmyjobs;echo '**********';squeue", (err, stream) => {
       if (err) throw err;
       stream
         .on("close", (code, signal) => {
           // console.log("Stream :: close :: code: " + code + ", signal: " + signal);
-          console.log('globalData', globalData)
+          console.log(globalData)
           conn.end();
         })
         .on("data", (data) => {
+          console.log('1',''+data)
           globalData = globalData + data
           // const outside = createArr("" + data);
           // console.log('outside', outside)
