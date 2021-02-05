@@ -44,8 +44,10 @@ function createArr(squeue, split) {
 }
 
 let sinfoArr = createArr(sinfo);
-
-// console.log('sinfoArr', sinfoArr);
+console.log('-----------------------');
+console.log('-----------------------');
+console.log('sinfoArr');
+console.log(sinfo);
 
 const keyArr = [1, 2, 3, 4];
 const nameArr = ['Total', 'Running', 'Free', 'Error'];
