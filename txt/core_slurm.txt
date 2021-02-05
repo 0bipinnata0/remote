@@ -1,0 +1,57 @@
+ClusterName=GengziSC
+ControlMachine=mgmt
+
+SlurmUser=slurm
+SlurmctldPort=6817
+SlurmdPort=6818
+AuthType=auth/munge
+StateSaveLocation=/var/spool/slurm/ctld
+SlurmdSpoolDir=/var/spool/slurm/d
+SwitchType=switch/none
+MpiDefault=none
+SlurmctldPidFile=/var/run/slurmctld.pid
+SlurmdPidFile=/var/run/slurmd.pid
+ProctrackType=proctrack/pgid
+
+# TIMERS
+SlurmctldTimeout=300
+SlurmdTimeout=300
+InactiveLimit=0
+MinJobAge=300
+KillWait=30
+Waittime=0
+
+# SCHEDULING
+SchedulerType=sched/backfill
+SelectType=select/cons_tres
+SelectTypeParameters=CR_Core
+
+# LOGGING
+SlurmctldDebug=info
+SlurmctldLogFile=/var/log/slurm/slurmctld.log
+SlurmdDebug=info
+SlurmdLogFile=/var/log/slurm/slurmd.log
+JobCompType=jobcomp/none
+
+# ACCOUNTING
+#JobAcctGatherType=jobacct_gather/linux
+#JobAcctGatherFrequency=30
+
+AccountingStorageType=accounting_storage/slurmdbd
+AccountingStorageEnforce=limits
+
+TaskPlugin=task/affinity
+PropagateResourceLimitsExcept=MEMLOCK
+Epilog=/etc/slurm/slurm.epilog.clean
+SlurmctldParameters=enable_configless
+ReturnToService=2
+
+# COMPUTE NODES
+NodeName=hn[1-8] CPUs=36 State=UNKNOWN
+NodeName=sf[1-4] CPUs=56 State=UNKNOWN 
+NodeName=hq1 CPUs=52 State=UNKNOWN
+PartitionName=2697 Nodes=hn[1-8] Default=YES MaxTime=UNLIMITED State=UP OverSubscribe=EXCLUSIVE
+PartitionName=8176 Nodes=sf[1-4] MaxTime=UNLIMITED State=UP OverSubscribe=EXCLUSIVE
+PartitionName=8172 Nodes=hq1 MaxTime=UNLIMITED State=UP OverSubscribe=EXCLUSIVE
+HealthCheckProgram=/usr/sbin/nhc
+HealthCheckInterval=300

@@ -63,6 +63,12 @@ let changeButton = false;
 const tasksArr = [];
 let taskObj = void 0;
 
+var STATUS = {
+  R: '0',
+  PD: '1',
+  S: '2',
+};
+
 const conn = new Client();
 conn
   .on('ready', () => {
